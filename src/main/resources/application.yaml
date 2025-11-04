@@ -1,0 +1,69 @@
+server:
+  port: 9020
+  address: 0.0.0.0
+
+
+#spring:
+#  datasource:
+#    dynamic:
+#      primary: master
+#      strict: false
+#      datasource:
+#        master:
+#          driver-class-name: com.mysql.cj.jdbc.Driver
+#          url: jdbc:mysql://10.20.0.34:3336/TD_OA
+#          username: panxiaoming
+#          password: xgqc2017?
+#          hikari:
+#            min-idle: 1    # 最小空闲连接数
+#            max-pool-size: 1    # 连接池最大连接数
+#            idle-timeout: 300000       # 空闲连接超时时间
+#            max-lifetime: 600000       # 连接最大生命周期
+#        slave:
+#          driver-class-name: com.mysql.cj.jdbc.Driver
+#          url: jdbc:mysql://10.20.0.208:3306/xg_user_center
+#          username: xgelt
+#          password: 40ZbnZ9&rpywJu
+#          hikari:
+#            min-idle: 1    # 最小空闲连接数
+#            max-pool-size: 1    # 连接池最大连接数
+#            idle-timeout: 300000       # 空闲连接超时时间
+#            max-lifetime: 600000       # 连接最大生命周期
+#        postgresql:
+#          driver-class-name: org.postgresql.Driver
+#          url: jdbc:postgresql://10.20.0.211:5432/spd
+#          username: hqweb
+#          password: hqweb
+#          hikari:
+#            min-idle: 1    # 最小空闲连接数
+#            max-pool-size: 1    # 连接池最大连接数
+#            idle-timeout: 300000       # 空闲连接超时时间
+#            max-lifetime: 600000       # 连接最大生命周期
+#        fourth:
+#          driver-class-name: com.mysql.cj.jdbc.Driver
+#          url: jdbc:mysql://localhost:3306/xgqc
+#          username: root
+#          password: password
+#        fifth:
+#          driver-class-name: com.mysql.cj.jdbc.Driver
+#          url: jdbc:mysql://10.20.0.5:3306/wms
+#          username: root
+#          password: xgqc2017?
+#          hikari:
+#            min-idle: 1    # 最小空闲连接数
+#            max-pool-size: 1    # 连接池最大连接数
+#            idle-timeout: 300000       # 空闲连接超时时间
+#            max-lifetime: 600000       # 连接最大生命周期
+
+
+#hbase:
+#  config:
+#    hbase:
+#      zookeeper:
+#        property:
+#          clientPort: 2181
+#        quorum: 10.20.0.192
+
+#mybatis-plus:
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

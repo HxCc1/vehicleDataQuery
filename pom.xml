@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.xgqc</groupId>
+    <artifactId>vehicleDataQuery</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+
+    <dependencies>
+        <!--    springframework     -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <!--    springframework-data-redis    -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <version>2.7.0</version> <!-- 使用适合你项目的版本 -->
+        </dependency>
+
+        <!--    springframework-web     -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.swagger.core.v3/swagger-annotations -->
+        <dependency>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>2.2.9</version>
+        </dependency>
+
+        <!--    swagger-annotations    -->
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>1.5.22</version>
+        </dependency>
+
+        <!--    lombok      -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.12</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!--    httpcomponents-client5    -->
+        <dependency>
+            <groupId>org.apache.httpcomponents.client5</groupId>
+            <artifactId>httpclient5</artifactId>
+            <version>5.2.1</version>
+        </dependency>
+
+        <!--    alibaba-fastjson    -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.73</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.directory.studio</groupId>
+            <artifactId>org.apache.commons.codec</artifactId>
+            <version>1.8</version>
+        </dependency>
+
+    </dependencies>
+
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>2.5.6</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <!-- 1. 修复资源配置：使用Spring Boot默认资源路径，无需手动指定targetPath -->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <!-- 保留资源过滤（如需），但删除错误的targetPath -->
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/*</include> <!-- 包含所有资源文件 -->
+                </includes>
+            </resource>
+            <!-- 若有自定义配置文件（如META-INF/spring.factories），无需单独配置，上面的**/*已包含 -->
+        </resources>
+
+        <plugins>
+            <!-- 2. 修复Spring Boot打包插件：版本与依赖管理一致，确保主类路径正确 -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <!-- 版本与dependencyManagement中的spring-boot-dependencies版本一致（2.5.6） -->
+                <version>2.5.1</version>
+                <configuration>
+                    <!-- 关键：确认主类的全路径是否与代码一致！！！ -->
+                    <mainClass>org.xgqc.Main</mainClass>
+                    <includeSystemScope>true</includeSystemScope> <!-- 若有系统依赖（如lib下的jar）需保留 -->
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>repackage</id>
+                        <goals>
+                            <goal>repackage</goal> <!-- 必须执行repackage，生成可执行Jar -->
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- 3. 可选：添加编译插件，确保代码编译后class文件路径正确 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+
+        <finalName>vehicleDataQuery</finalName>
+    </build>
+
+</project>
