@@ -1,5 +1,8 @@
 package org.xgqc.entity;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
+@Schema(description = "登录登出数据实体类")
 public class LoginAndLoginoutData {
     private String vin;
     private String logoutDataTime;

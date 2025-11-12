@@ -1,7 +1,8 @@
 package org.xgqc.entity;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.xgqc.pojo.GearState;
-
+@Schema(description = "车辆实时整车数据实体类，表示车辆的实时整车数据")
 public class VehicleRedisData {
     private String vin;
     // 数据时间

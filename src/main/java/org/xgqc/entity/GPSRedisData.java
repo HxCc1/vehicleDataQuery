@@ -1,7 +1,9 @@
 package org.xgqc.entity;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.xgqc.util.ParseWordUtil;
 
+@Schema(description = "GPS定位数据实体类，包含地址相关字段")
 public class GPSRedisData {
     private String vin;
     private String dataTime;          // GPS数据时间

@@ -1,5 +1,8 @@
 package org.xgqc.entity;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
+@Schema(description = "CAN数据实体类，表示车辆的CAN总线数据")
 public class CanRedisData {
     private String vin;
     // can数据时间
