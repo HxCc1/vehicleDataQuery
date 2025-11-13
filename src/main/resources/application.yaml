@@ -2,6 +2,15 @@ server:
   port: 9020
   address: 0.0.0.0
 
+# 日志配置
+logging:
+  file:
+#    path: D:/project-logs/oa-system  # 自定义绝对路径（Windows）
+     path: /data/project/vehicle_data_query/log  # 自定义绝对路径（Linux/Mac）
+    # path: ./logs/oa-custom  # 相对路径（项目根目录下）
+  level:
+    root: INFO  # 根日志级别
+    pro.xgqc.vspOA: DEBUG  # 业务包日志级别（按需调整）
 
 #spring:
 #  datasource:

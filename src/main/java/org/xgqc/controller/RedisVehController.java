@@ -19,6 +19,7 @@ import org.xgqc.pojo.RateLimit;
 import org.xgqc.pojo.RateLimit.LimitType;
 import org.xgqc.response.R;
 import org.xgqc.service.IRedisVehService;
+import org.xgqc.service.impl.RedisVehServiceImpl;
 
 @RestController
 @Tag(name = "Redis车辆数据接口", description = "包含车辆实时整车数据、定位数据、DBC数据，支持在线调试")
@@ -26,7 +27,7 @@ import org.xgqc.service.IRedisVehService;
 public class RedisVehController {
     @Autowired
     private IRedisVehService redisService;
-    private static final Logger logger = LoggerFactory.getLogger(RedisVehController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(RedisVehController.class);
 
     public RedisVehController() {
     }
@@ -58,10 +59,10 @@ public class RedisVehController {
                     result.setVin(vin);
                 }
             } catch (Exception e) {
-                logger.error("获取VIN: {}的整车数据时发生异常", vin, e);
+                LOGGER.error("获取VIN: {}的整车数据时发生异常", vin, e);
             }
 
-            logger.info("车辆最新整车数据 - 响应数据: {}", result);
+            LOGGER.info("车辆最新整车数据 - 响应数据: {}", result);
             return R.success(result);
         }
     }
@@ -91,10 +92,10 @@ public class RedisVehController {
                     result.setVin(vin);
                 }
             } catch (Exception e) {
-                logger.error("获取VIN: {}的GPS数据时发生异常", vin, e);
+                LOGGER.error("获取VIN: {}的GPS数据时发生异常", vin, e);
             }
 
-            logger.info("车辆最新GPS数据 - 响应数据: {}", result);
+            LOGGER.info("车辆最新GPS数据 - 响应数据: {}", result);
             return R.success(result);
         }
     }
@@ -126,10 +127,10 @@ public class RedisVehController {
                     result.setVin(vin);
                 }
             } catch (Exception e) {
-                logger.error("获取VIN: {}的CAN数据时发生异常", vin, e);
+                LOGGER.error("获取VIN: {}的CAN数据时发生异常", vin, e);
             }
 
-            logger.info("车辆最新DBC数据 - 响应数据: {}", result);
+            LOGGER.info("车辆最新DBC数据 - 响应数据: {}", result);
             return R.success(result);
         }
     }
